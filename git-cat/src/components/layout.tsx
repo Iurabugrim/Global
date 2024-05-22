@@ -1,10 +1,11 @@
 import NavigationMenu from "@/components/navigation-menu.tsx";
 import {Outlet} from "react-router";
 import {FaGithubAlt} from "react-icons/fa";
+import {useUser} from "@/hooks/useUser.tsx";
 
 
 const MainLayout = () => {
-    let events = 50
+    const {user} = useUser()
 
     return (
         <main className={"w-screen h-screen flex gap-10"}>
@@ -20,16 +21,16 @@ const MainLayout = () => {
                     </div>
                     <div className={"bg-indigo-400 rounded-2xl p-5 text-white flex flex-col font-semibold"}>
                         <div className={"flex items-center gap-1"}>
-                            <p>Received events:</p>
-                            <p>{events}</p>
+                            <p>Following:</p>
+                            <p>{user?.following}</p>
                         </div>
                         <div className={"flex items-center gap-1"}>
                             <p>Followers:</p>
-                            <p>{events}</p>
+                            <p>{user?.followers}</p>
                         </div>
                         <div className={"flex items-center gap-1"}>
-                            <p>Forks:</p>
-                            <p>{events}</p>
+                            <p>Public repos:</p>
+                            <p>{user?.public_repos}</p>
                         </div>
                     </div>
                 </div>
